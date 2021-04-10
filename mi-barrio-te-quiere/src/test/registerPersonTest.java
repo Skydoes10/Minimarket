@@ -20,6 +20,10 @@ class registerPersonTest {
 	}
 	
 	private void setupScenary2() {
+		Person p = new Person(TypeID.TI, 123456);
+	}
+	
+	private void setupScenary3() {
 		Person p = new Person(TypeID.TI, 12345);
 	}
 	
@@ -37,7 +41,7 @@ class registerPersonTest {
 	
 	@Test
 	public void testRegisterPerson2() {
-		setupScenary1();
+		setupScenary2();
 		try {
 			fail("NoMatchNumberException expected");
 		} catch (IdTypeNotAllowedException itnae) {
@@ -49,7 +53,7 @@ class registerPersonTest {
 	
 	@Test
 	public void testRegisterPerson3() {
-		setupScenary2();
+		setupScenary3();
 		try {
 			fail("IdTypeNotAllowedException expected");
 		} catch (IdTypeNotAllowedException itnae) {
