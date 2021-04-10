@@ -65,4 +65,9 @@ public class Minimarket {
 	public int getTotalPeople() {
 		return totalPeople;
 	}
+
+	public ArrayList<Person> getPeopleRegistered() {
+		return peopleRegistered;
+	}
+	
 }

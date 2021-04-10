@@ -82,6 +82,5 @@ public class Main {
 	
 	public void viewAttempts() {
 		System.out.println("Total de intentos de ingreso: "+mini.getTotalPeople());
-		mainMenu();
 	}
 }
