@@ -4,6 +4,6 @@ package exceptions;
 public class NoMatchNumberException extends Exception{
 	
 	public NoMatchNumberException() {
-		super("El penultimo número del documento no coincide con el día");
+		super("The penultimate number of the ID doesn't match the date");
 	}
 }

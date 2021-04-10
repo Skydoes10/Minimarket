@@ -1,6 +1,9 @@
 package ui;
 
 import java.util.Scanner;
+
+import exceptions.IdTypeNotAllowedException;
+import exceptions.NoMatchNumberException;
 import model.Minimarket;
 
 public class Main {
@@ -10,6 +13,7 @@ public class Main {
 	
 	public Main(){
 		sc = new Scanner(System.in);
+		mini = new Minimarket();
 	}
 
 	public static void main(String[] args) {
@@ -32,10 +36,10 @@ public class Main {
 		switch(option) {
 			case 1: chooseTypeID();
 				break;
-			case 2: optionMenu2();
+			case 2: viewAttempts();
 				break;
-			case 3: menu = false;
-					System.out.println("\nBye!");
+			case 3: System.out.println("\nBye!");
+					menu = false;
 				break;
 			default:
 					System.out.println("\nError, invalid option");
@@ -50,7 +54,7 @@ public class Main {
 							"\n(2) CC - Cédula de ciudadanía" +
 							"\n(3) PP - Pasaporte" +
 							"\n(4) CE - Cédula de Extranjería" +
-							"\n(0) Volver al menú principal");
+							"\n(0) Volver al menú principal\n");
 		option = Integer.parseInt(sc.nextLine());
 		if(option == 0) {
 			mainMenu();
@@ -60,13 +64,24 @@ public class Main {
 	}
 	
 	public void enterNumID(int option) {
-		String numID;
+		int numID;
 		System.out.println("\nDigite el número de identificación:\n");
-		numID = sc.nextLine();
-		System.out.println(mini.registerPerson(option, numID));
+		numID = Integer.parseInt(sc.nextLine());
+		try {
+			System.out.println(mini.registerPerson(option, numID));
+		} catch (NoMatchNumberException nmne) {
+			System.out.println("El penultimo número del documento no coincide con el día");
+			System.err.println(nmne.getMessage());
+			nmne.printStackTrace();
+		} catch (IdTypeNotAllowedException itnae) {
+			System.out.println("La persona debe ser mayor de edad para poder ser registrada");
+			System.err.println(itnae.getMessage());
+			itnae.printStackTrace();
+		}
 	}
 	
-	public void optionMenu2() {
-		
+	public void viewAttempts() {
+		System.out.println("Total de intentos de ingreso: "+mini.getTotalPeople());
+		mainMenu();
 	}
 }

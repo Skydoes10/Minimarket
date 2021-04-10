@@ -2,9 +2,9 @@ package model;
 
 public class Person {
 	private TypeID typeId;
-	private String numId;
+	private int numId;
 
-	public Person(TypeID tID, String nI) {
+	public Person(TypeID tID, int nI) {
 		typeId = tID;
 		numId = nI;
 	}
@@ -13,7 +13,7 @@ public class Person {
 		return typeId;
 	}
 
-	public String getNumId() {
+	public int getNumId() {
 		return numId;
 	}
 

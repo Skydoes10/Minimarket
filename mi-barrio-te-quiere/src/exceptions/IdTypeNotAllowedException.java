@@ -4,6 +4,6 @@ package exceptions;
 public class IdTypeNotAllowedException extends Exception{
 	
 	public IdTypeNotAllowedException() {
-		super("La persona debe ser mayor de edad para poder ser registrada");
+		super("Type of ID can't be TI");
 	}
 }
